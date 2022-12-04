@@ -8,11 +8,11 @@
 */
 
 var snowModes = {
-    ASCII : 0,
+    UTF8 : 0,
     CLASSIC : 1
 };
 
-var snowEntitiesAscii = ["&#x2022;", "x", "$", "o", "#", "/", "&#x20BF;", "&sect;", "&para;", ";", "&amp", "?", "%"];
+var snowEntitiesUtf8 = ["&#x2022;", "x", "$", "o", "#", "/", "&#x20BF;", "&sect;", "&para;", ";", "&amp", "?", "%"];
 var snowEntitiesClassic = ["&#x2022;"];
 
 // Config
@@ -52,13 +52,13 @@ function startSnow() {
 function initSnowFX() {
 	
 	if (typeof snowMode === 'undefined') {
-		snowMode = snowModes.ASCII;
+		snowMode = snowModes.UTF8;
 	}
 
 	if (snowMode == snowModes.CLASSIC) {
 		snowEntities = snowEntitiesClassic;
 	} else {
-		snowEntities = snowEntitiesAscii;
+		snowEntities = snowEntitiesUtf8;
 	}
 	
 	addSnowContainer();
