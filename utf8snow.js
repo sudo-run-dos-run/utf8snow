@@ -2,29 +2,28 @@
 // https://github.com/sudo-run-dos-run/utf8snow by Tobias Weigl https://www.tobias-weigl.de/
 // - based on Snow.js - v0.0.3 by kurisubrooks.com
 //
-// TODO: CSS snow style should be refactored into a css class
 // TODO: Check if transparency looks cool for the snow flakes
 // TODO: Move script into its own namespace (API design)
 */
+
+// Public API Enums
 
 var snowModes = {
     UTF8 : 0,
     CLASSIC : 1
 };
 
+// Internal Config
+
 var snowEntitiesUtf8 = ["&#x2022;", "x", "$", "o", "#", "/", "&#x20BF;", "&sect;", "&para;", ";", "&amp", "?", "%"];
 var snowEntitiesClassic = ["&#x2022;"];
 
-// Config
 var snowMax = 150;
 var snowRefresh = 25;
 var snowSpeed = 0.25;
 var snowMinSize = 8;
 var snowMaxSize = 30;
 var snowColor = ["#999", "#BBB", "#EEE"];
-
-// Additional Styles
-var snowStyles = "cursor:default; user-select:none; pointer-events:none; position:absolute; ";
 
 var snow = [],
 	pos = [],
@@ -33,7 +32,7 @@ var snow = [],
 	marginBottom,
 	marginRight;
 
-function randomise(range) {
+function randomize(range) {
 	rand = Math.floor(range * Math.random());
 	return rand;
 }
@@ -62,12 +61,13 @@ function initSnowFX() {
 	}
 	
 	addSnowContainer();
+	addCss();
 	
 	for (i = 0; i <= snowMax; i++) {
 		let s = document.createElement('div');
 		s.setAttribute('id', 'flake' + i);
-		s.setAttribute('style', snowStyles + " rotate:" + (Math.random() * 60 - 30) + "deg; " + "top:-" + snowMaxSize);
-		s.innerHTML = snowEntities[randomise(snowEntities.length)];
+		s.setAttribute('class', 'staticSnowFlakeStyles');
+		s.innerHTML = snowEntities[randomize(snowEntities.length)];
 		document.getElementById('snowContainer').append(s);
 	}
 
@@ -81,14 +81,13 @@ function initSnowFX() {
 		lefr[i] = Math.random() * 50;
 		pos[i] = 0.05 + Math.random() / 10;
 		snow[i] = document.getElementById("flake" + i);
-		snow[i].style.fontFamily = "inherit";
-		snow[i].size = randomise(snowSize) + snowMinSize;
+		snow[i].size = randomize(snowSize) + snowMinSize;
 		snow[i].style.fontSize = snow[i].size + "px";
-		snow[i].style.color = snowColor[randomise(snowColor.length)];
-		snow[i].style.zIndex = 1000;
+		snow[i].style.color = snowColor[randomize(snowColor.length)];
 		snow[i].sink = snowSpeed * snow[i].size / 5;
-		snow[i].posX = randomise(marginRight - snow[i].size);
-		snow[i].posY = randomise(2 * marginBottom - marginBottom - 2 * snow[i].size);
+		snow[i].posX = randomize(marginRight - snow[i].size);
+		snow[i].posY = randomize(2 * marginBottom - marginBottom - 2 * snow[i].size);
+		snow[i].style.rotate = randomize(Math.random() * 60) - 30 + "deg";
 		snow[i].style.left = snow[i].posX + "px";
 		snow[i].style.top = snow[i].posY + "px";
 	}
@@ -109,7 +108,7 @@ function moveSnow() {
 		snow[i].style.top = snow[i].posY + "px";
 
 		if (snow[i].posY >= marginBottom - 2 * snow[i].size || parseInt(snow[i].style.left) > (marginRight - 3 * lefr[i])) {
-			snow[i].posX = randomise(marginRight - snow[i].size);
+			snow[i].posX = randomize(marginRight - snow[i].size);
 			snow[i].posY = 0;
 		}
 	}
@@ -121,4 +120,11 @@ function addSnowContainer() {
 	let d = document.createElement('div');
 	d.setAttribute('id', 'snowContainer');
 	document.body.prepend(d);
+};
+
+function addCss() {
+	let c = document.createElement('style');
+	c.setAttribute('type', 'text/css');
+	c.textContent = '.staticSnowFlakeStyles {top:-' + snowMaxSize + '; position:absolute; z-index:1000; fontFamily:inherit; cursor:default; user-select:none; pointer-events:none; }';
+	document.head.append(c);
 };
