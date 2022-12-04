@@ -7,9 +7,16 @@
 // TODO: Move script into its own namespace (API design)
 */
 
-var snowEntities = ["&#x2022;", "x", "$", "o", "#", "/", "&#x20BF;", "&sect;", "&para;", ";", "&amp", "?", "%"];
+var snowModes = {
+    ASCII : 0,
+    CLASSIC : 1
+};
+
+var snowEntitiesAscii = ["&#x2022;", "x", "$", "o", "#", "/", "&#x20BF;", "&sect;", "&para;", ";", "&amp", "?", "%"];
+var snowEntitiesClassic = ["&#x2022;"];
 
 // Config
+var snowMode = snowModes.ASCII;
 var snowMax = 150;
 var snowRefresh = 25;
 var snowSpeed = 0.25;
@@ -44,6 +51,12 @@ function startAsciiSnow() {
 }
 
 function initSnowFX() {
+	
+	if (snowMode == snowModes.CLASSIC) {
+		snowEntities = snowEntitiesClassic;
+	} else {
+		snowEntities = snowEntitiesAscii;
+	}
 	
 	addSnowContainer();
 	
