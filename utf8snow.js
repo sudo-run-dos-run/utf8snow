@@ -22,7 +22,7 @@ utf8snow = (function () {
 	// Internal Config
 	const _snowEntitiesUtf8 = ["&#x2022;", "x", "$", "o", "#", "/", "&#x20BF;", "&sect;", "&para;", ";", "&amp;", "?", "%"];
 	const _snowEntitiesClassic = ["&#x2022;"];
-	const _snowMax = 150;
+	const _snowMax = 180;
 	const _snowRefresh = 25;
 	const _snowSpeed = 0.25;
 	const _snowMinSize = 8;
@@ -68,7 +68,7 @@ utf8snow = (function () {
 			_snow[_i].style.left = _snow[_i].posX + _lefr[_i] * Math.sin(0.3 * _coords[_i]) + "px";
 			_snow[_i].style.top = _snow[_i].posY + "px";
 
-			if (_snow[_i].posY >= _marginBottom - 2 * _snow[_i].size + _snowMaxSize || parseInt(_snow[_i].style.left) > (_marginRight - 3 * _lefr[_i]) + _snowMaxSize) {
+			if (_snow[_i].posY >= _marginBottom - 2 * _snow[_i].size + _snowMaxSize) {
 				_snow[_i].posX = _randomize(_marginRight - _snow[_i].size);
 				_snow[_i].posY = -_snowMaxSize ;
 			}
