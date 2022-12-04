@@ -29,7 +29,13 @@ function randomise(range) {
 }
 
 function startAsciiSnow() {
-	window.addEventListener('load', initSnowFX);
+	
+	if (document.readyState == 'complete') {
+		initSnowFX();
+	} else {
+		window.addEventListener('load', initSnowFX);
+	}
+	
 	window.addEventListener('resize', resizeSnowFX);
 }
 
