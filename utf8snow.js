@@ -20,15 +20,15 @@ utf8snow = (function () {
 
 	// Internal Config
 
-	var snowEntitiesUtf8 = ["&#x2022;", "x", "$", "o", "#", "/", "&#x20BF;", "&sect;", "&para;", ";", "&amp", "?", "%"];
-	var snowEntitiesClassic = ["&#x2022;"];
+	const snowEntitiesUtf8 = ["&#x2022;", "x", "$", "o", "#", "/", "&#x20BF;", "&sect;", "&para;", ";", "&amp", "?", "%"];
+	const snowEntitiesClassic = ["&#x2022;"];
 
-	var snowMax = 150;
-	var snowRefresh = 25;
-	var snowSpeed = 0.25;
-	var snowMinSize = 8;
-	var snowMaxSize = 30;
-	var snowColor = ["#999", "#BBB", "#EEE"];
+	const snowMax = 150;
+	const snowRefresh = 25;
+	const snowSpeed = 0.25;
+	const snowMinSize = 8;
+	const snowMaxSize = 30;
+	const snowColor = ["#999", "#BBB", "#EEE"];
 
 	var snow = [],
 		pos = [],
@@ -37,30 +37,19 @@ utf8snow = (function () {
 		marginBottom,
 		marginRight;
 
-	function randomize(range) {
+	function _randomize(range) {
 		rand = Math.floor(range * Math.random());
 		return rand;
 	}
 
-	function addSnowContainer() {
+	function _addSnowContainer() {
 		let d = document.createElement('div');
 		d.setAttribute('id', 'snowContainer');
 		document.body.prepend(d);
 		return undefined;
 	}
 	
-	function startSnow() {
-		
-		if (document.readyState == 'complete') {
-			initSnowFX();
-		} else {
-			window.addEventListener('load', initSnowFX);
-		}
-		
-		window.addEventListener('resize', resizeSnowFX);
-	}
-	
-	function moveSnow() {
+	function _moveSnow() {
 		for (i = 0; i <= snowMax; i++) {
 			coords[i] += pos[i];
 			snow[i].posY += snow[i].sink;
@@ -68,15 +57,15 @@ utf8snow = (function () {
 			snow[i].style.top = snow[i].posY + "px";
 
 			if (snow[i].posY >= marginBottom - 2 * snow[i].size + snowMaxSize || parseInt(snow[i].style.left) > (marginRight - 3 * lefr[i]) + snowMaxSize) {
-				snow[i].posX = randomize(marginRight - snow[i].size);
+				snow[i].posX = _randomize(marginRight - snow[i].size);
 				snow[i].posY = -snowMaxSize ;
 			}
 		}
 
-		setTimeout(moveSnow, snowRefresh);
+		setTimeout(_moveSnow, snowRefresh);
 	}
 
-	function initSnowFX() {
+	function _initSnowFX() {
 		
 		if (typeof snowMode === 'undefined') {
 			snowMode = snowModes.UTF8;
@@ -88,14 +77,14 @@ utf8snow = (function () {
 			snowEntities = snowEntitiesUtf8;
 		}
 		
-		addSnowContainer();
-		addCss();
+		_addSnowContainer();
+		_addCss();
 		
 		for (i = 0; i <= snowMax; i++) {
 			let s = document.createElement('div');
 			s.setAttribute('id', 'flake' + i);
 			s.setAttribute('class', 'staticSnowFlakeStyles');
-			s.innerHTML = snowEntities[randomize(snowEntities.length)];
+			s.innerHTML = snowEntities[_randomize(snowEntities.length)];
 			document.getElementById('snowContainer').append(s);
 		}
 
@@ -109,30 +98,41 @@ utf8snow = (function () {
 			lefr[i] = Math.random() * 50;
 			pos[i] = 0.05 + Math.random() / 10;
 			snow[i] = document.getElementById("flake" + i);
-			snow[i].size = randomize(snowSize) + snowMinSize;
+			snow[i].size = _randomize(snowSize) + snowMinSize;
 			snow[i].style.fontSize = snow[i].size + "px";
-			snow[i].style.color = snowColor[randomize(snowColor.length)];
+			snow[i].style.color = snowColor[_randomize(snowColor.length)];
 			snow[i].sink = snowSpeed * snow[i].size / 5;
-			snow[i].posX = randomize(marginRight - snow[i].size);
-			snow[i].posY = randomize(2 * marginBottom - marginBottom - 2 * snow[i].size);
-			snow[i].style.rotate = randomize(Math.random() * 60) - 30 + "deg";
+			snow[i].posX = _randomize(marginRight - snow[i].size);
+			snow[i].posY = _randomize(2 * marginBottom - marginBottom - 2 * snow[i].size);
+			snow[i].style.rotate = _randomize(Math.random() * 60) - 30 + "deg";
 			snow[i].style.left = snow[i].posX + "px";
 			snow[i].style.top = snow[i].posY + "px";
 		}
 		
-		moveSnow();
+		_moveSnow();
 	}
 
-	function resizeSnowFX() {
+	function _resizeSnowFX() {
 		marginBottom = document.body.scrollHeight + 10;
 		marginRight = document.body.clientWidth + 10;
 	}
 
-	function addCss() {
+	function _addCss() {
 		let c = document.createElement('style');
 		c.setAttribute('type', 'text/css');
 		c.textContent = '.staticSnowFlakeStyles {position:absolute; z-index:1000; fontFamily:inherit; cursor:default; user-select:none; pointer-events:none; }';
 		document.head.append(c);
+	}
+		
+	function startSnow() {
+		
+		if (document.readyState == 'complete') {
+			_initSnowFX();
+		} else {
+			window.addEventListener('load', _initSnowFX);
+		}
+		
+		window.addEventListener('resize', _resizeSnowFX);
 	}
 	
 	return {
