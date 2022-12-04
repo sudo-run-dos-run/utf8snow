@@ -4,6 +4,7 @@
 //
 // TODO: CSS snow style should be refactored into a css class
 // TODO: Check if transparency looks cool for the snow flakes
+// TODO: Move script into its own namespace (API design)
 */
 
 var snowEntities = ["&#x2022;", "x", "$", "o", "#", "/", "&#x20BF;", "&sect;", "&para;", ";", "&amp", "?", "%"];
