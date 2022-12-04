@@ -56,6 +56,10 @@ utf8snow = (function () {
 		document.head.append(_c);
 	}
 
+	function _resizeSnowFX() {
+		_marginBottom = document.getElementById('snowContainer').clientHeight + 10;
+		_marginRight = document.getElementById('snowContainer').clientWidth + 10;
+	}
 
 	function _moveSnow() {
 		for (var _i = 0; _i < _snowMax; _i++) {
@@ -121,10 +125,6 @@ utf8snow = (function () {
 		_moveSnow();
 	}
 
-	function _resizeSnowFX() {
-		_marginBottom = document.body.scrollHeight + 10;
-		_marginRight = document.body.clientWidth + 10;
-	}
 	function startSnow() {
 		
 		if (document.readyState == 'complete') {
