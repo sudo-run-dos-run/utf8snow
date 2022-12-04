@@ -100,8 +100,7 @@ utf8snow = (function () {
 
 		var _snowSize = _snowMaxSize - _snowMinSize;
 		
-		_marginBottom = document.body.scrollHeight + 10;
-		_marginRight = document.body.clientWidth + 10;
+		_resizeSnowFX();
 
 		for (_i = 0; _i < _snowMax; _i++) {
 			_coords[_i] = 0;
