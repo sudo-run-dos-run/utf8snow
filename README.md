@@ -10,6 +10,11 @@ A lightweight snow effect for any website
   * Nicely self-contained
 * No dependencies like jQuery, all native JavaScript
 
+# How to use it (namespace)
+After adding the script, the API is located at: "utf8snow".
+* Example: Start the script via
+  *utf8snow.startSnow();
+
 # How it looks
 Comes with 2 modes:
 * characters, and
