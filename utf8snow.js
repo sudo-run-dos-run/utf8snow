@@ -3,18 +3,17 @@
 // - based on Snow.js - v0.0.3 by kurisubrooks.com
 //
 // TODO: Check if transparency looks cool for the snow flakes
-// TODO: Move script into its own namespace (API design)
 */
 
+// Init namespace 'utf8snow'
 var utf8snow,
     utf8snow = utf8snow || {};
 
+// Def namespace 'utf8snow'
 utf8snow = (function () {
-	
-	var _thisUtf8snow = this;
-	
+		
 	// Public API Enums
-	var snowModes = {
+	const snowModes = {
 		UTF8 : 0,
 		CLASSIC : 1
 	};
@@ -60,6 +59,22 @@ utf8snow = (function () {
 		
 		window.addEventListener('resize', resizeSnowFX);
 	}
+	
+	function moveSnow() {
+		for (i = 0; i <= snowMax; i++) {
+			coords[i] += pos[i];
+			snow[i].posY += snow[i].sink;
+			snow[i].style.left = snow[i].posX + lefr[i] * Math.sin(0.3 * coords[i]) + "px";
+			snow[i].style.top = snow[i].posY + "px";
+
+			if (snow[i].posY >= marginBottom - 2 * snow[i].size + snowMaxSize || parseInt(snow[i].style.left) > (marginRight - 3 * lefr[i]) + snowMaxSize) {
+				snow[i].posX = randomize(marginRight - snow[i].size);
+				snow[i].posY = -snowMaxSize ;
+			}
+		}
+
+		setTimeout(moveSnow, snowRefresh);
+	}
 
 	function initSnowFX() {
 		
@@ -104,31 +119,13 @@ utf8snow = (function () {
 			snow[i].style.left = snow[i].posX + "px";
 			snow[i].style.top = snow[i].posY + "px";
 		}
-
+		
 		moveSnow();
 	}
 
 	function resizeSnowFX() {
 		marginBottom = document.body.scrollHeight + 10;
 		marginRight = document.body.clientWidth + 10;
-	}
-
-	function moveSnow() {
-		for (i = 0; i <= snowMax; i++) {
-			coords[i] += pos[i];
-			snow[i].posY += snow[i].sink;
-			snow[i].style.left = snow[i].posX + lefr[i] * Math.sin(0.3 * coords[i]) + "px";
-			snow[i].style.top = snow[i].posY + "px";
-
-			if (snow[i].posY >= marginBottom - 2 * snow[i].size + snowMaxSize || parseInt(snow[i].style.left) > (marginRight - 3 * lefr[i]) + snowMaxSize) {
-				snow[i].posX = randomize(marginRight - snow[i].size);
-				snow[i].posY = -snowMaxSize ;
-			}
-		}
-
-		setTimeout("moveSnow()", snowRefresh);
-		
-		return undefined;
 	}
 
 	function addCss() {
