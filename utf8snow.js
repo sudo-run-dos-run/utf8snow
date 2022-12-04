@@ -1,5 +1,5 @@
 /*!
-// https://github.com/sudo-run-dos-run/asciiSnow by Tobias Weigl https://www.tobias-weigl.de/
+// https://github.com/sudo-run-dos-run/utf8snow by Tobias Weigl https://www.tobias-weigl.de/
 // - based on Snow.js - v0.0.3 by kurisubrooks.com
 //
 // TODO: CSS snow style should be refactored into a css class
@@ -38,7 +38,7 @@ function randomise(range) {
 	return rand;
 }
 
-function startAsciiSnow() {
+function startSnow() {
 	
 	if (document.readyState == 'complete') {
 		initSnowFX();
