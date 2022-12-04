@@ -16,7 +16,6 @@ var snowEntitiesAscii = ["&#x2022;", "x", "$", "o", "#", "/", "&#x20BF;", "&sect
 var snowEntitiesClassic = ["&#x2022;"];
 
 // Config
-var snowMode = snowModes.ASCII;
 var snowMax = 150;
 var snowRefresh = 25;
 var snowSpeed = 0.25;
@@ -52,6 +51,10 @@ function startAsciiSnow() {
 
 function initSnowFX() {
 	
+	if (typeof snowMode === 'undefined') {
+		snowMode = snowModes.ASCII;
+	}
+
 	if (snowMode == snowModes.CLASSIC) {
 		snowEntities = snowEntitiesClassic;
 	} else {
