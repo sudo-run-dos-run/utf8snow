@@ -9,13 +9,13 @@ var utf8snow,
 
 // Def namespace 'utf8snow'
 utf8snow = (function () {
-		
+
 	// Public API Enums for supported snow modes
 	const snowModes = {
 		UTF8 : 0,
 		CLASSIC : 1
 	};
-	
+
 	// Public API  for the active snow mode
 	var snowMode;
 
@@ -48,7 +48,15 @@ utf8snow = (function () {
 		document.body.prepend(_d);
 		return undefined;
 	}
-	
+
+		function _addCss() {
+		let _c = document.createElement('style');
+		_c.setAttribute('type', 'text/css');
+		_c.textContent = '.staticSnowFlakeStyles {position:absolute; z-index:1000; fontFamily:inherit; cursor:default; user-select:none; pointer-events:none; }';
+		document.head.append(_c);
+	}
+
+
 	function _moveSnow() {
 		for (var _i = 0; _i < _snowMax; _i++) {
 			_coords[_i] += _pos[_i];
@@ -118,14 +126,6 @@ utf8snow = (function () {
 		_marginBottom = document.body.scrollHeight + 10;
 		_marginRight = document.body.clientWidth + 10;
 	}
-
-	function _addCss() {
-		let _c = document.createElement('style');
-		_c.setAttribute('type', 'text/css');
-		_c.textContent = '.staticSnowFlakeStyles {position:absolute; z-index:1000; fontFamily:inherit; cursor:default; user-select:none; pointer-events:none; }';
-		document.head.append(_c);
-	}
-		
 	function startSnow() {
 		
 		if (document.readyState == 'complete') {
