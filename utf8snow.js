@@ -125,6 +125,6 @@ function addSnowContainer() {
 function addCss() {
 	let c = document.createElement('style');
 	c.setAttribute('type', 'text/css');
-	c.textContent = '.staticSnowFlakeStyles {top:-' + snowMaxSize + '; position:absolute; z-index:1000; fontFamily:inherit; cursor:default; user-select:none; pointer-events:none; }';
+	c.textContent = '.staticSnowFlakeStyles {position:absolute; z-index:1000; fontFamily:inherit; cursor:default; user-select:none; pointer-events:none; }';
 	document.head.append(c);
 };
