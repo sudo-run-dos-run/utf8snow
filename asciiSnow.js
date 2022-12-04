@@ -1,4 +1,7 @@
 /*!
+// https://github.com/sudo-run-dos-run/asciiSnow by Tobias Weigl https://www.tobias-weigl.de/
+// - based on Snow.js - v0.0.3 by kurisubrooks.com
+//
 // TODO: CSS snow style should be refactored into a css class
 // TODO: Check if transparency looks cool for the snow flakes
 */
