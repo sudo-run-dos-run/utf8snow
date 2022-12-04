@@ -1,8 +1,4 @@
 /*!
-// sciiSnow script history:
-// v0.1.1 | 2021-12-01 | by Tobias Weigl: Optimized Snow Amount and Rendering, made snow flakes non-clickable
-// v0.1.2 | 2022-12-02 | by Tobias Weigl: Moved Snow Flakes into Separate DOM Container "snowContainer", changed snow flakes to ASCII art, added random snow flake rotation
-//
 // TODO: Asynchronous calls in this script are not clean (i.e., after the body has loaded, the script should be runnable, but the activation call can be before or after this event)
 // TODO: CSS snow style should be refactored into a css class
 // TODO: Check if transparency looks cool for the snow flakes
