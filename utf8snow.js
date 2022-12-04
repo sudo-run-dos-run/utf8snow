@@ -49,7 +49,7 @@ utf8snow = (function () {
 		return undefined;
 	}
 
-		function _addCss() {
+	function _addCss() {
 		let _c = document.createElement('style');
 		_c.setAttribute('type', 'text/css');
 		_c.textContent = '.staticSnowFlakeStyles {position:absolute; z-index:1000; fontFamily:inherit; cursor:default; user-select:none;}';
@@ -135,10 +135,11 @@ utf8snow = (function () {
 		
 		window.addEventListener('resize', _resizeSnowFX);
 	}
-	
+
 	return {
 		snowMode : snowMode,
 		snowModes : snowModes,
 		startSnow : startSnow
 	}
+	
 }());
