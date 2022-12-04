@@ -1,5 +1,4 @@
 /*!
-// TODO: Asynchronous calls in this script are not clean (i.e., after the body has loaded, the script should be runnable, but the activation call can be before or after this event)
 // TODO: CSS snow style should be refactored into a css class
 // TODO: Check if transparency looks cool for the snow flakes
 */
@@ -29,16 +28,22 @@ function randomise(range) {
 	return rand;
 }
 
-function initSnowFX() {
+function startAsciiSnow() {
+	window.addEventListener('load', initSnowFX);
+	window.addEventListener('resize', resizeSnowFX);
+}
 
+function initSnowFX() {
+	
+	addSnowContainer();
+	
 	for (i = 0; i <= snowMax; i++) {
 		let s = document.createElement('div');
 		s.setAttribute('id', 'flake' + i);
 		s.setAttribute('style', snowStyles + " rotate:" + (Math.random() * 60 - 30) + "deg; " + "top:-" + snowMaxSize);
 		s.innerHTML = snowEntities[randomise(snowEntities.length)];
-                document.getElementById('snowContainer').append(s);
+		document.getElementById('snowContainer').append(s);
 	}
-
 
 	var snowSize = snowMaxSize - snowMinSize;
 	
@@ -86,11 +91,8 @@ function moveSnow() {
 	setTimeout("moveSnow()", snowRefresh);
 }
 
-function addSnowContainer () {
+function addSnowContainer() {
 	let d = document.createElement('div');
 	d.setAttribute('id', 'snowContainer');
 	document.body.prepend(d);
 };
-
-window.addEventListener('load', addSnowContainer);
-window.addEventListener('resize', resizeSnowFX);
