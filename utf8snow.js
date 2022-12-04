@@ -53,7 +53,7 @@ utf8snow = (function () {
 	}
 	
 	function _moveSnow() {
-		for (var _i = 0; _i <= _snowMax; _i++) {
+		for (var _i = 0; _i < _snowMax; _i++) {
 			_coords[_i] += _pos[_i];
 			_snow[_i].posY += _snow[_i].sink;
 			_snow[_i].style.left = _snow[_i].posX + _lefr[_i] * Math.sin(0.3 * _coords[_i]) + "px";
@@ -85,7 +85,7 @@ utf8snow = (function () {
 		_addSnowContainer();
 		_addCss();
 		
-		for (_i = 0; _i <= _snowMax; _i++) {
+		for (_i = 0; _i < _snowMax; _i++) {
 			let _s = document.createElement('div');
 			_s.setAttribute('id', 'flake' + _i);
 			_s.setAttribute('class', 'staticSnowFlakeStyles');
@@ -98,7 +98,7 @@ utf8snow = (function () {
 		_marginBottom = document.body.scrollHeight + 10;
 		_marginRight = document.body.clientWidth + 10;
 
-		for (_i = 0; _i <= _snowMax; _i++) {
+		for (_i = 0; _i < _snowMax; _i++) {
 			_coords[_i] = 0;
 			_lefr[_i] = Math.random() * 50;
 			_pos[_i] = 0.05 + Math.random() / 10;
