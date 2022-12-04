@@ -1,10 +1,4 @@
 /*!
-// Origin of this script:
-// Snow.js - v0.0.3
-// kurisubrooks.com
-*/
-
-/*!
 // sciiSnow script history:
 // v0.1.1 | 2021-12-01 | by Tobias Weigl: Optimized Snow Amount and Rendering, made snow flakes non-clickable
 // v0.1.2 | 2022-12-02 | by Tobias Weigl: Moved Snow Flakes into Separate DOM Container "snowContainer", changed snow flakes to ASCII art, added random snow flake rotation
