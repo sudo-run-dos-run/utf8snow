@@ -20,10 +20,8 @@ utf8snow = (function () {
 	var snowMode;
 
 	// Internal Config
-
-	const _snowEntitiesUtf8 = ["&#x2022;", "x", "$", "o", "#", "/", "&#x20BF;", "&sect;", "&para;", ";", "&amp", "?", "%"];
+	const _snowEntitiesUtf8 = ["&#x2022;", "x", "$", "o", "#", "/", "&#x20BF;", "&sect;", "&para;", ";", "&amp;", "?", "%"];
 	const _snowEntitiesClassic = ["&#x2022;"];
-
 	const _snowMax = 150;
 	const _snowRefresh = 25;
 	const _snowSpeed = 0.25;
