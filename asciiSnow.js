@@ -2,8 +2,6 @@
 // TODO: Asynchronous calls in this script are not clean (i.e., after the body has loaded, the script should be runnable, but the activation call can be before or after this event)
 // TODO: CSS snow style should be refactored into a css class
 // TODO: Check if transparency looks cool for the snow flakes
-//
-// NOTE: We keep this script free from jQuery dependencies, because it should be lightweight. It should be only 1 file.
 */
 
 var snowEntities = ["&#x2022;", "x", "$", "o", "#", "/", "&#x20BF;", "&sect;", "&para;", ";", "&amp", "?", "%"];
