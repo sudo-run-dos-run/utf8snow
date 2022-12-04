@@ -17,6 +17,9 @@ utf8snow = (function () {
 		UTF8 : 0,
 		CLASSIC : 1
 	};
+	
+	// Public API  for the active snow mode
+	var snowMode;
 
 	// Internal Config
 
@@ -67,14 +70,16 @@ utf8snow = (function () {
 
 	function _initSnowFX() {
 		
-		if (typeof snowMode === 'undefined') {
-			snowMode = snowModes.UTF8;
+		var _snowEntities;
+		
+		if (typeof utf8snow.snowMode === 'undefined') {
+			utf8snow.snowMode = snowModes.UTF8;
 		}
 
-		if (snowMode == snowModes.CLASSIC) {
-			snowEntities = snowEntitiesClassic;
+		if (utf8snow.snowMode == snowModes.CLASSIC) {
+			_snowEntities = _snowEntitiesClassic;
 		} else {
-			snowEntities = snowEntitiesUtf8;
+			_snowEntities = _snowEntitiesUtf8;
 		}
 		
 		_addSnowContainer();
@@ -136,6 +141,7 @@ utf8snow = (function () {
 	}
 	
 	return {
+		snowMode : snowMode,
 		snowModes : snowModes,
 		startSnow : startSnow
 	}
