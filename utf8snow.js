@@ -1,8 +1,6 @@
 /*!
 // https://github.com/sudo-run-dos-run/utf8snow by Tobias Weigl https://www.tobias-weigl.de/
 // - based on Snow.js - v0.0.3 by kurisubrooks.com
-//
-// TODO: Check if transparency looks cool for the snow flakes
 */
 
 // Init namespace 'utf8snow'
@@ -31,7 +29,7 @@ utf8snow = (function () {
 	const _snowSpeed = 0.25;
 	const _snowMinSize = 8;
 	const _snowMaxSize = 30;
-	const _snowColor = ["#999", "#BBB", "#EEE"];
+	const _snowColor = ["rgba(255, 255, 255, 0.5)", "rgba(255, 255, 255, 0.65)", "rgba(255, 255, 255, 0.8)"];
 
 	var _snow = [],
 		_pos = [],
