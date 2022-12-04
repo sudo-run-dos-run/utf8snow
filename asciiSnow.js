@@ -105,3 +105,4 @@ function addSnowContainer () {
 };
 
 window.addEventListener('load', addSnowContainer);
+window.addEventListener('resize', resizeSnowFX);
