@@ -52,7 +52,7 @@ utf8snow = (function () {
 		function _addCss() {
 		let _c = document.createElement('style');
 		_c.setAttribute('type', 'text/css');
-		_c.textContent = '.staticSnowFlakeStyles {position:absolute; z-index:1000; fontFamily:inherit; cursor:default; user-select:none; pointer-events:none; }';
+		_c.textContent = '.staticSnowFlakeStyles {position:absolute; z-index:1000; fontFamily:inherit; cursor:default; user-select:none; }';
 		document.head.append(_c);
 	}
 
