@@ -44,6 +44,7 @@ utf8snow = (function () {
 	function _addSnowContainer() {
 		let _d = document.createElement('div');
 		_d.setAttribute('id', 'snowContainer');
+		_d.setAttribute('style', 'position:fixed; z-index: 1000; ');
 		document.body.prepend(_d);
 		return undefined;
 	}
