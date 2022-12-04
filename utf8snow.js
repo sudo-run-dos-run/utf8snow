@@ -107,9 +107,9 @@ function moveSnow() {
 		snow[i].style.left = snow[i].posX + lefr[i] * Math.sin(0.3 * coords[i]) + "px";
 		snow[i].style.top = snow[i].posY + "px";
 
-		if (snow[i].posY >= marginBottom - 2 * snow[i].size || parseInt(snow[i].style.left) > (marginRight - 3 * lefr[i])) {
+		if (snow[i].posY >= marginBottom - 2 * snow[i].size + snowMaxSize || parseInt(snow[i].style.left) > (marginRight - 3 * lefr[i])) {
 			snow[i].posX = randomize(marginRight - snow[i].size);
-			snow[i].posY = 0;
+			snow[i].posY = -snowMaxSize ;
 		}
 	}
 
