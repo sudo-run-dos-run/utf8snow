@@ -8,6 +8,7 @@ A lightweight snow effect for any website
 * Injects its entire contents inside one child node of the html-body
   * Doesn't bloat the run time DOM
   * Nicely self-contained
+  * Does not influence the underlying website
 * No dependencies like jQuery, all native JavaScript
 
 # How to use it (namespace)
