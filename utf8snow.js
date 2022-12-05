@@ -1,13 +1,13 @@
 /*!
-// https://github.com/sudo-run-dos-run/utf8snow by Tobias Weigl https://www.tobias-weigl.de/
+// https://github.com/sudo-run-dos-run/utf8snow by Tobias Weigl https://www.tobias-weigl.de
 // - based on Snow.js - v0.0.3 by kurisubrooks.com
 */
 
-// Init namespace 'utf8snow'
+// Decl namespace 'utf8snow'
 var utf8snow,
     utf8snow = utf8snow || {};
 
-// Def namespace 'utf8snow'
+// Impl namespace 'utf8snow'
 utf8snow = (function () {
 
 	// Public API Enum for supported snow modes
@@ -16,7 +16,7 @@ utf8snow = (function () {
 		CLASSIC : 1
 	};
 
-	// Public API  for the active snow mode
+	// Public API config variable for snow mode
 	var snowMode;
 
 	// Internal Config
