@@ -44,14 +44,14 @@ utf8snow = (function () {
 	function _addSnowContainer() {
 		let _d = document.createElement('div');
 		_d.setAttribute('id', 'snowContainer');
-		_d.setAttribute('style', 'position:fixed; z-index:1000; height:100%; width:100%; pointer-events:none;');
+		_d.setAttribute('style', 'position:fixed; z-index:1000; height:100%; width:100%; pointer-events:none; cursor:default; user-select:none;');
 		document.body.prepend(_d);
 	}
 
 	function _addCss() {
 		let _c = document.createElement('style');
 		_c.setAttribute('type', 'text/css');
-		_c.textContent = '.staticSnowFlakeStyles {position:absolute; z-index:1000; fontFamily:inherit; cursor:default; user-select:none;}';
+		_c.textContent = '.staticSnowFlakeStyles {position:absolute;}';
 		document.head.append(_c);
 	}
 
