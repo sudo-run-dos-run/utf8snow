@@ -10,8 +10,8 @@ var utf8snow,
 // Def namespace 'utf8snow'
 utf8snow = (function () {
 
-	// Public API Enums for supported snow modes
-	const snowModes = {
+	// Public API Enum for supported snow modes
+	const SnowModes = {
 		UTF8 : 0,
 		CLASSIC : 1
 	};
@@ -81,10 +81,10 @@ utf8snow = (function () {
 		var _snowEntities;
 		
 		if (typeof utf8snow.snowMode === 'undefined') {
-			utf8snow.snowMode = snowModes.UTF8;
+			utf8snow.snowMode = SnowModes.UTF8;
 		}
 
-		if (utf8snow.snowMode == snowModes.CLASSIC) {
+		if (utf8snow.snowMode == SnowModes.CLASSIC) {
 			_snowEntities = _snowEntitiesClassic;
 		} else {
 			_snowEntities = _snowEntitiesUtf8;
@@ -137,7 +137,7 @@ utf8snow = (function () {
 
 	return {
 		snowMode : snowMode,
-		snowModes : snowModes,
+		SnowModes : SnowModes,
 		startSnow : startSnow
 	}
 	
