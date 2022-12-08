@@ -120,7 +120,9 @@ utf8snow = (function () {
 			_snow[_i].style.left = _snow[_i].posX + "px";
 			_snow[_i].style.top = _snow[_i].posY + "px";
 		}
-		
+
+		window.addEventListener('resize', _resizeSnowFX);
+
 		_moveSnow();
 	}
 
@@ -131,8 +133,6 @@ utf8snow = (function () {
 		} else {
 			window.addEventListener('load', _initSnowFX);
 		}
-		
-		window.addEventListener('resize', _resizeSnowFX);
 	}
 
 	return {
