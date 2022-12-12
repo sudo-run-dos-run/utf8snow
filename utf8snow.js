@@ -27,7 +27,11 @@ utf8snow = (function () {
 	const _snowSpeed = 0.25;
 	const _snowMinSize = 8;
 	const _snowMaxSize = 30;
-	const _snowColor = ["rgba(255, 255, 255, 0.5)", "rgba(255, 255, 255, 0.65)", "rgba(255, 255, 255, 0.8)"];
+	// Range [0, 1]: 0 = no effect, 1 = complete transparency
+	const _snowTransparencyOffset = 0.05;
+	// Range [0, 1]: 0 = max background-foreground transparency gradient, 1 = no transparency gradient
+	const _snowTransparencyDamper = 0.25;
+	const _snowColor = 'white';
 
 	var _snow = [],
 		_pos = [],
@@ -51,7 +55,7 @@ utf8snow = (function () {
 	function _addCss() {
 		let _c = document.createElement('style');
 		_c.setAttribute('type', 'text/css');
-		_c.textContent = '.staticSnowFlakeStyles {position:absolute;}';
+		_c.textContent = '.staticSnowFlakeStyles {position:absolute;color:' + _snowColor + '}';
 		document.head.append(_c);
 	}
 
@@ -112,7 +116,7 @@ utf8snow = (function () {
 			_snow[_i] = document.getElementById("flake" + _i);
 			_snow[_i].size = _randomize(_snowSize) + _snowMinSize;
 			_snow[_i].style.fontSize = _snow[_i].size + "px";
-			_snow[_i].style.color = _snowColor[_randomize(_snowColor.length)];
+			_snow[_i].style.opacity = (_snowTransparencyDamper + (1 - _snowTransparencyDamper) * ((_snow[_i].size - _snowMinSize) / (_snowMaxSize - _snowMinSize))) - _snowTransparencyOffset;
 			_snow[_i].sink = _snowSpeed * _snow[_i].size / 5;
 			_snow[_i].posX = _randomize(_marginRight - _snow[_i].size);
 			_snow[_i].posY = _randomize(2 * _marginBottom - _marginBottom - 2 * _snow[_i].size);
